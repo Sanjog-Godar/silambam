@@ -10,7 +10,6 @@ class TournamentDetails extends StatelessWidget {
     const Color darkNavyBg = Color(0xFF050C1D);
     const Color lightNavyCard = Color(0xFF1A2641);
     const Color coralRed = Color(0xFFF4511E);
-    const Color orangeAccent = Color(0xFFFF9800);
     const Color cyanInfo = Colors.cyanAccent;
 
     return Scaffold(
