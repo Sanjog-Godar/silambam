@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'all_tournament.dart';
+import '../services/auth_api_service.dart';
+import '../models/api_error.dart';
 
 class JuryLogin
     extends
@@ -30,6 +32,9 @@ class _JuryLoginState
   bool
   _obscurePassword =
       true;
+  bool
+  _isLoading =
+      false;
 
   @override
   void
@@ -40,18 +45,94 @@ class _JuryLoginState
   }
 
   void
-  _handleLogin() {
-    // For now, navigate to AllTournament without checking details
-    Navigator.of(
-      context,
-    ).pushReplacement(
-      MaterialPageRoute(
-        builder:
-            (
-              context,
-            ) => const AllTournament(),
-      ),
-    );
+  _handleLogin() async {
+    // Validate input
+    if (_emailController.text.isEmpty ||
+        _passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Please enter both email and password',
+          ),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      // Call API
+      final response = await AuthApiService.judgeLogin(
+        email: _emailController.text.trim(),
+        password: _passwordController.text,
+      );
+
+      // Login successful
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(
+        SnackBar(
+          content: Text(
+            response.message,
+          ),
+          backgroundColor: Colors.green,
+        ),
+      );
+
+      // Navigate to AllTournament screen
+      if (mounted) {
+        Navigator.of(
+          context,
+        ).pushReplacement(
+          MaterialPageRoute(
+            builder:
+                (
+                  context,
+                ) => const AllTournament(),
+          ),
+        );
+      }
+    } on ApiError catch (
+      e
+    ) {
+      // Show error message
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(
+        SnackBar(
+          content: Text(
+            e.message,
+          ),
+          backgroundColor: Colors.red,
+        ),
+      );
+    } catch (
+      e
+    ) {
+      // Handle unexpected errors
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(
+        SnackBar(
+          content: Text(
+            'An unexpected error occurred: ${e.toString()}',
+          ),
+          backgroundColor: Colors.red,
+        ),
+      );
+    } finally {
+      setState(
+        () {
+          _isLoading = false;
+        },
+      );
+    }
   }
 
   @override
@@ -294,7 +375,9 @@ class _JuryLoginState
                             ],
                           ),
                           child: ElevatedButton(
-                            onPressed: _handleLogin,
+                            onPressed: _isLoading
+                                ? null
+                                : _handleLogin,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: orangeGold,
                               padding: const EdgeInsets.symmetric(
@@ -306,14 +389,44 @@ class _JuryLoginState
                                 ),
                               ),
                             ),
-                            child: const Text(
-                              'Login',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            child: _isLoading
+                                ? const Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width: 20,
+                                        height: 20,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<
+                                                Color
+                                              >(
+                                                Colors.white,
+                                              ),
+                                          strokeWidth: 2,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        'Logging in...',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                : const Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                           ),
                         ),
                       ],
