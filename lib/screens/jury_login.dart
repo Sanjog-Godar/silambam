@@ -1,41 +1,82 @@
 import 'package:flutter/material.dart';
 import 'all_tournament.dart';
 
-class JuryLogin extends StatefulWidget {
-  const JuryLogin({super.key});
+class JuryLogin
+    extends
+        StatefulWidget {
+  const JuryLogin({
+    super.key,
+  });
 
   @override
-  State<JuryLogin> createState() => _JuryLoginState();
+  State<
+    JuryLogin
+  >
+  createState() =>
+      _JuryLoginState();
 }
 
-class _JuryLoginState extends State<JuryLogin> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  bool _obscurePassword = true;
+class _JuryLoginState
+    extends
+        State<
+          JuryLogin
+        > {
+  final TextEditingController
+  _emailController =
+      TextEditingController();
+  final TextEditingController
+  _passwordController =
+      TextEditingController();
+  bool
+  _obscurePassword =
+      true;
 
   @override
-  void dispose() {
+  void
+  dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
 
-  void _handleLogin() {
+  void
+  _handleLogin() {
     // For now, navigate to AllTournament without checking details
-    Navigator.of(context).pushReplacement(
+    Navigator.of(
+      context,
+    ).pushReplacement(
       MaterialPageRoute(
-        builder: (context) => const AllTournament(),
+        builder:
+            (
+              context,
+            ) => const AllTournament(),
       ),
     );
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget
+  build(
+    BuildContext
+    context,
+  ) {
     // Color Palette
-    const Color darkNavy = Color(0xFF0B2340);
-    const Color cardNavy = Color(0xFF1A3A52);
-    const Color tealAccent = Color(0xFF27B7B0);
-    const Color orangeGold = Color(0xFFE3A23A);
+    const Color
+    darkNavy = Color(
+      0xFF0B2340,
+    );
+    const Color
+    cardNavy = Color(
+      0xFF1A3A52,
+    );
+    const Color
+    tealAccent = Color(
+      0xFF27B7B0,
+    );
+    const Color
+    orangeGold = Color(
+      0xFFE3A23A,
+    );
 
     return Scaffold(
       body: Container(
@@ -58,15 +99,26 @@ class _JuryLoginState extends State<JuryLogin> {
               children: [
                 // Main Card
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.85,
+                  width:
+                      MediaQuery.of(
+                        context,
+                      ).size.width *
+                      0.85,
                   decoration: BoxDecoration(
                     color: cardNavy,
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(
+                      24,
+                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
+                        color: Colors.black.withOpacity(
+                          0.5,
+                        ),
                         blurRadius: 15,
-                        offset: const Offset(0, 8),
+                        offset: const Offset(
+                          0,
+                          8,
+                        ),
                       ),
                     ],
                   ),
@@ -84,7 +136,9 @@ class _JuryLoginState extends State<JuryLogin> {
                           fit: BoxFit.contain,
                         ),
 
-                        const SizedBox(height: 16),
+                        const SizedBox(
+                          height: 16,
+                        ),
 
                         // Title
                         const Text(
@@ -97,12 +151,16 @@ class _JuryLoginState extends State<JuryLogin> {
                           ),
                         ),
 
-                        const SizedBox(height: 32),
+                        const SizedBox(
+                          height: 32,
+                        ),
 
                         // Email TextField
                         TextField(
                           controller: _emailController,
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
                           decoration: InputDecoration(
                             hintText: 'Email',
                             hintStyle: TextStyle(
@@ -115,21 +173,27 @@ class _JuryLoginState extends State<JuryLogin> {
                             filled: true,
                             fillColor: Colors.transparent,
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(
+                                16,
+                              ),
                               borderSide: const BorderSide(
                                 color: tealAccent,
                                 width: 2,
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(
+                                16,
+                              ),
                               borderSide: const BorderSide(
                                 color: tealAccent,
                                 width: 2,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(
+                                16,
+                              ),
                               borderSide: const BorderSide(
                                 color: tealAccent,
                                 width: 2,
@@ -138,13 +202,17 @@ class _JuryLoginState extends State<JuryLogin> {
                           ),
                         ),
 
-                        const SizedBox(height: 16),
+                        const SizedBox(
+                          height: 16,
+                        ),
 
                         // Password TextField
                         TextField(
                           controller: _passwordController,
                           obscureText: _obscurePassword,
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
                           decoration: InputDecoration(
                             hintText: 'Password',
                             hintStyle: TextStyle(
@@ -156,9 +224,11 @@ class _JuryLoginState extends State<JuryLogin> {
                             ),
                             suffixIcon: GestureDetector(
                               onTap: () {
-                                setState(() {
-                                  _obscurePassword = !_obscurePassword;
-                                });
+                                setState(
+                                  () {
+                                    _obscurePassword = !_obscurePassword;
+                                  },
+                                );
                               },
                               child: Icon(
                                 _obscurePassword
@@ -170,21 +240,27 @@ class _JuryLoginState extends State<JuryLogin> {
                             filled: true,
                             fillColor: Colors.transparent,
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(
+                                16,
+                              ),
                               borderSide: const BorderSide(
                                 color: tealAccent,
                                 width: 2,
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(
+                                16,
+                              ),
                               borderSide: const BorderSide(
                                 color: tealAccent,
                                 width: 2,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(
+                                16,
+                              ),
                               borderSide: const BorderSide(
                                 color: tealAccent,
                                 width: 2,
@@ -193,18 +269,27 @@ class _JuryLoginState extends State<JuryLogin> {
                           ),
                         ),
 
-                        const SizedBox(height: 32),
+                        const SizedBox(
+                          height: 32,
+                        ),
 
                         // Login Button
                         Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24),
+                            borderRadius: BorderRadius.circular(
+                              24,
+                            ),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
+                                color: Colors.black.withOpacity(
+                                  0.3,
+                                ),
                                 blurRadius: 10,
-                                offset: const Offset(0, 4),
+                                offset: const Offset(
+                                  0,
+                                  4,
+                                ),
                               ),
                             ],
                           ),
@@ -212,9 +297,13 @@ class _JuryLoginState extends State<JuryLogin> {
                             onPressed: _handleLogin,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: orangeGold,
-                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 16,
+                              ),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(24),
+                                borderRadius: BorderRadius.circular(
+                                  24,
+                                ),
                               ),
                             ),
                             child: const Text(
