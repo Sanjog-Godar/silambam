@@ -1,16 +1,36 @@
 import 'package:flutter/material.dart';
 import 'tournament_details.dart';
 
-class CategoryDetails extends StatelessWidget {
-  const CategoryDetails({super.key});
+class CategoryDetails
+    extends
+        StatelessWidget {
+  const CategoryDetails({
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget
+  build(
+    BuildContext
+    context,
+  ) {
     // Color Palette from design prompt
-    const Color darkNavyBg = Color(0xFF0B2340);
-    const Color cardBg = Color(0xFF143455);
-    const Color tealAccent = Color(0xFF27B7B0);
-    const Color orangeGold = Color(0xFFE3A23A);
+    const Color
+    darkNavyBg = Color(
+      0xFF0B2340,
+    );
+    const Color
+    cardBg = Color(
+      0xFF143455,
+    );
+    const Color
+    tealAccent = Color(
+      0xFF27B7B0,
+    );
+    const Color
+    orangeGold = Color(
+      0xFFE3A23A,
+    );
 
     return Scaffold(
       backgroundColor: darkNavyBg,
@@ -20,25 +40,39 @@ class CategoryDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // 1. Header with back arrow and logo
-              _buildHeader(context),
+              _buildHeader(
+                context,
+              ),
 
               // Divider line
               Container(
                 height: 1,
                 width: double.infinity,
-                color: Colors.white.withOpacity(0.25),
+                color: Colors.white.withValues(
+                  alpha: 0.25,
+                ),
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(
+                height: 24,
+              ),
 
               // 2. Tournament Details Card
-              _buildTournamentDetailsCard(cardBg, tealAccent, orangeGold),
+              _buildTournamentDetailsCard(
+                cardBg,
+                tealAccent,
+                orangeGold,
+              ),
 
-              const SizedBox(height: 28),
+              const SizedBox(
+                height: 28,
+              ),
 
               // 3. "List of Categories" heading
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.0),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                ),
                 child: Text(
                   'List of Categories',
                   style: TextStyle(
@@ -49,12 +83,21 @@ class CategoryDetails extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 16),
+              const SizedBox(
+                height: 16,
+              ),
 
               // 4. Category List Item
-              _buildCategoryCard(context, cardBg, tealAccent, orangeGold),
+              _buildCategoryCard(
+                context,
+                cardBg,
+                tealAccent,
+                orangeGold,
+              ),
 
-              const SizedBox(height: 24),
+              const SizedBox(
+                height: 24,
+              ),
             ],
           ),
         ),
@@ -63,9 +106,16 @@ class CategoryDetails extends StatelessWidget {
   }
 
   /// Header with Back Button and Centered Logo
-  Widget _buildHeader(BuildContext context) {
+  Widget
+  _buildHeader(
+    BuildContext
+    context,
+  ) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 12.0,
+      ),
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -73,8 +123,14 @@ class CategoryDetails extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: IconButton(
-              icon: const Icon(Icons.chevron_left, color: Colors.white, size: 32),
-              onPressed: () => Navigator.of(context).pop(),
+              icon: const Icon(
+                Icons.chevron_left,
+                color: Colors.white,
+                size: 32,
+              ),
+              onPressed: () => Navigator.of(
+                context,
+              ).pop(),
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
             ),
@@ -85,14 +141,27 @@ class CategoryDetails extends StatelessWidget {
             height: 64,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.white.withOpacity(0.3), width: 1.5),
+              border: Border.all(
+                color: Colors.white.withValues(
+                  alpha: 0.3,
+                ),
+                width: 1.5,
+              ),
             ),
             child: ClipOval(
               child: Image.network(
                 'https://ocm.olympics.com.my/public/images/members/logos/member_logo_51.png',
                 fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) =>
-                    const Icon(Icons.image, color: Colors.white54, size: 40),
+                errorBuilder:
+                    (
+                      context,
+                      error,
+                      stackTrace,
+                    ) => const Icon(
+                      Icons.image,
+                      color: Colors.white54,
+                      size: 40,
+                    ),
               ),
             ),
           ),
@@ -102,27 +171,43 @@ class CategoryDetails extends StatelessWidget {
   }
 
   /// Tournament Details Card
-  Widget _buildTournamentDetailsCard(
-    Color cardBg,
-    Color tealAccent,
-    Color orangeGold,
+  Widget
+  _buildTournamentDetailsCard(
+    Color
+    cardBg,
+    Color
+    tealAccent,
+    Color
+    orangeGold,
   ) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 24.0,
+      ),
       child: Container(
         decoration: BoxDecoration(
           color: cardBg,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(
+            16,
+          ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: Colors.black.withValues(
+                alpha: 0.25,
+              ),
               blurRadius: 8,
-              offset: const Offset(0, 4),
+              offset: const Offset(
+                0,
+                4,
+              ),
             ),
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20.0,
+            vertical: 20.0,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -149,7 +234,9 @@ class CategoryDetails extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 16),
+              const SizedBox(
+                height: 16,
+              ),
 
               // Test100 title
               const Text(
@@ -161,13 +248,21 @@ class CategoryDetails extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(
+                height: 12,
+              ),
 
               // Venue and Time metadata
               Row(
                 children: [
-                  Icon(Icons.location_on, color: tealAccent, size: 18),
-                  const SizedBox(width: 8),
+                  Icon(
+                    Icons.location_on,
+                    color: tealAccent,
+                    size: 18,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
                   const Expanded(
                     child: Text(
                       'Venue: Pokhara sirjana Chowk',
@@ -180,12 +275,20 @@ class CategoryDetails extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 8),
+              const SizedBox(
+                height: 8,
+              ),
 
               Row(
                 children: [
-                  Icon(Icons.access_time, color: tealAccent, size: 18),
-                  const SizedBox(width: 8),
+                  Icon(
+                    Icons.access_time,
+                    color: tealAccent,
+                    size: 18,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
                   const Text(
                     'Time: 22:10:00',
                     style: TextStyle(
@@ -203,36 +306,58 @@ class CategoryDetails extends StatelessWidget {
   }
 
   /// Category List Item Card
-  Widget _buildCategoryCard(
-    BuildContext context,
-    Color cardBg,
-    Color tealAccent,
-    Color orangeGold,
+  Widget
+  _buildCategoryCard(
+    BuildContext
+    context,
+    Color
+    cardBg,
+    Color
+    tealAccent,
+    Color
+    orangeGold,
   ) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 24.0,
+      ),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(
+          Navigator.of(
+            context,
+          ).push(
             MaterialPageRoute(
-              builder: (context) => const TournamentDetails(),
+              builder:
+                  (
+                    context,
+                  ) => const TournamentDetails(),
             ),
           );
         },
         child: Container(
           decoration: BoxDecoration(
             color: cardBg,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(
+              16,
+            ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.25),
+                color: Colors.black.withValues(
+                  alpha: 0.25,
+                ),
                 blurRadius: 8,
-                offset: const Offset(0, 4),
+                offset: const Offset(
+                  0,
+                  4,
+                ),
               ),
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 16.0,
+            ),
             child: Row(
               children: [
                 // Left content
@@ -262,7 +387,9 @@ class CategoryDetails extends StatelessWidget {
                         ],
                       ),
 
-                      const SizedBox(height: 8),
+                      const SizedBox(
+                        height: 8,
+                      ),
 
                       // Number "2" in orange/gold
                       Text(
@@ -274,7 +401,9 @@ class CategoryDetails extends StatelessWidget {
                         ),
                       ),
 
-                      const SizedBox(height: 12),
+                      const SizedBox(
+                        height: 12,
+                      ),
 
                       // "ongoing" status chip
                       Container(
@@ -283,10 +412,16 @@ class CategoryDetails extends StatelessWidget {
                           vertical: 6.0,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.3),
-                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.black.withValues(
+                            alpha: 0.3,
+                          ),
+                          borderRadius: BorderRadius.circular(
+                            12,
+                          ),
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.2),
+                            color: Colors.white.withValues(
+                              alpha: 0.2,
+                            ),
                             width: 0.5,
                           ),
                         ),
@@ -303,12 +438,16 @@ class CategoryDetails extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(width: 16),
+                const SizedBox(
+                  width: 16,
+                ),
 
                 // Right chevron
                 Icon(
                   Icons.chevron_right,
-                  color: Colors.white.withOpacity(0.6),
+                  color: Colors.white.withValues(
+                    alpha: 0.6,
+                  ),
                   size: 24,
                 ),
               ],

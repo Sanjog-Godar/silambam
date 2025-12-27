@@ -1,16 +1,36 @@
 import 'package:flutter/material.dart';
 import 'category_details.dart';
 
-class AllTournament extends StatelessWidget {
-  const AllTournament({super.key});
+class AllTournament
+    extends
+        StatelessWidget {
+  const AllTournament({
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget
+  build(
+    BuildContext
+    context,
+  ) {
     // Color Palette
-    const Color darkNavyBg = Color(0xFF0B2340);
-    const Color cardBg = Color(0xFF143455);
-    const Color tealAccent = Color(0xFF27B7B0);
-    const Color orangeGold = Color(0xFFE3A23A);
+    const Color
+    darkNavyBg = Color(
+      0xFF0B2340,
+    );
+    const Color
+    cardBg = Color(
+      0xFF143455,
+    );
+    const Color
+    tealAccent = Color(
+      0xFF27B7B0,
+    );
+    const Color
+    orangeGold = Color(
+      0xFFE3A23A,
+    );
 
     return Scaffold(
       backgroundColor: darkNavyBg,
@@ -25,7 +45,9 @@ class AllTournament extends StatelessWidget {
             Container(
               height: 1,
               width: double.infinity,
-              color: Colors.white.withOpacity(0.25),
+              color: Colors.white.withValues(
+                alpha: 0.25,
+              ),
             ),
 
             // 2. BODY - Scrollable tournament list
@@ -36,7 +58,10 @@ class AllTournament extends StatelessWidget {
                   children: [
                     // Title
                     const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 24.0,
+                        vertical: 24.0,
+                      ),
                       child: Text(
                         'All Tournaments',
                         style: TextStyle(
@@ -58,7 +83,9 @@ class AllTournament extends StatelessWidget {
                       orangeGold,
                     ),
 
-                    const SizedBox(height: 16),
+                    const SizedBox(
+                      height: 16,
+                    ),
 
                     _buildTournamentCard(
                       context,
@@ -70,7 +97,9 @@ class AllTournament extends StatelessWidget {
                       orangeGold,
                     ),
 
-                    const SizedBox(height: 24),
+                    const SizedBox(
+                      height: 24,
+                    ),
                   ],
                 ),
               ),
@@ -82,14 +111,22 @@ class AllTournament extends StatelessWidget {
   }
 
   /// Header with Menu, Logo, and User
-  Widget _buildHeader() {
+  Widget
+  _buildHeader() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 16.0,
+      ),
       child: Row(
         children: [
           // Left: Hamburger menu icon
           IconButton(
-            icon: const Icon(Icons.menu, color: Colors.white, size: 28),
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: 28,
+            ),
             onPressed: () {},
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(),
@@ -103,14 +140,27 @@ class AllTournament extends StatelessWidget {
                 height: 60,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white.withOpacity(0.3), width: 1.5),
+                  border: Border.all(
+                    color: Colors.white.withValues(
+                      alpha: 0.3,
+                    ),
+                    width: 1.5,
+                  ),
                 ),
                 child: ClipOval(
                   child: Image.network(
                     'https://ocm.olympics.com.my/public/images/members/logos/member_logo_51.png',
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) =>
-                        const Icon(Icons.image, color: Colors.white54, size: 35),
+                    errorBuilder:
+                        (
+                          context,
+                          error,
+                          stackTrace,
+                        ) => const Icon(
+                          Icons.image,
+                          color: Colors.white54,
+                          size: 35,
+                        ),
                   ),
                 ),
               ),
@@ -119,20 +169,36 @@ class AllTournament extends StatelessWidget {
 
           // Right: User profile section
           PopupMenuButton(
-            onSelected: (value) {},
-            itemBuilder: (BuildContext context) => [
-              const PopupMenuItem(
-                child: Text('Profile'),
-              ),
-              const PopupMenuItem(
-                child: Text('Logout'),
-              ),
-            ],
+            onSelected:
+                (
+                  value,
+                ) {},
+            itemBuilder:
+                (
+                  BuildContext context,
+                ) => [
+                  const PopupMenuItem(
+                    child: Text(
+                      'Profile',
+                    ),
+                  ),
+                  const PopupMenuItem(
+                    child: Text(
+                      'Logout',
+                    ),
+                  ),
+                ],
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.person, color: Colors.white, size: 24),
-                const SizedBox(width: 8),
+                const Icon(
+                  Icons.person,
+                  color: Colors.white,
+                  size: 24,
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
                 const Text(
                   'tester1@gmail.com',
                   style: TextStyle(
@@ -141,10 +207,14 @@ class AllTournament extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(width: 4),
+                const SizedBox(
+                  width: 4,
+                ),
                 Icon(
                   Icons.arrow_drop_down,
-                  color: Colors.white.withOpacity(0.7),
+                  color: Colors.white.withValues(
+                    alpha: 0.7,
+                  ),
                   size: 20,
                 ),
               ],
@@ -156,39 +226,64 @@ class AllTournament extends StatelessWidget {
   }
 
   /// Tournament Card
-  Widget _buildTournamentCard(
-    BuildContext context,
-    String tournamentName,
-    String venue,
-    String time,
-    Color cardBg,
-    Color tealAccent,
-    Color orangeGold,
+  Widget
+  _buildTournamentCard(
+    BuildContext
+    context,
+    String
+    tournamentName,
+    String
+    venue,
+    String
+    time,
+    Color
+    cardBg,
+    Color
+    tealAccent,
+    Color
+    orangeGold,
   ) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
+        Navigator.of(
+          context,
+        ).push(
           MaterialPageRoute(
-            builder: (context) => const CategoryDetails(),
+            builder:
+                (
+                  context,
+                ) => const CategoryDetails(),
           ),
         );
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 24.0,
+        ),
         child: Container(
           decoration: BoxDecoration(
             color: cardBg,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(
+              16,
+            ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.25),
+                color: Colors.black.withValues(
+                  alpha: 0.25,
+                ),
                 blurRadius: 8,
-                offset: const Offset(0, 4),
+                offset: const Offset(
+                  0,
+                  4,
+                ),
               ),
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 16.0,
+            ),
             child: Row(
               children: [
                 // Left: Small logo thumbnail
@@ -197,19 +292,34 @@ class AllTournament extends StatelessWidget {
                   height: 56,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white.withOpacity(0.2), width: 1),
+                    border: Border.all(
+                      color: Colors.white.withValues(
+                        alpha: 0.2,
+                      ),
+                      width: 1,
+                    ),
                   ),
                   child: ClipOval(
                     child: Image.network(
                       'https://ocm.olympics.com.my/public/images/members/logos/member_logo_51.png',
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Icon(Icons.image, color: Colors.white54, size: 30),
+                      errorBuilder:
+                          (
+                            context,
+                            error,
+                            stackTrace,
+                          ) => const Icon(
+                            Icons.image,
+                            color: Colors.white54,
+                            size: 30,
+                          ),
                     ),
                   ),
                 ),
 
-                const SizedBox(width: 16),
+                const SizedBox(
+                  width: 16,
+                ),
 
                 // Middle: Tournament info
                 Expanded(
@@ -228,19 +338,29 @@ class AllTournament extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
 
-                      const SizedBox(height: 8),
+                      const SizedBox(
+                        height: 8,
+                      ),
 
                       // Metadata row: Venue and Time
                       Row(
                         children: [
                           // Location
-                          Icon(Icons.location_on, color: tealAccent, size: 16),
-                          const SizedBox(width: 6),
+                          Icon(
+                            Icons.location_on,
+                            color: tealAccent,
+                            size: 16,
+                          ),
+                          const SizedBox(
+                            width: 6,
+                          ),
                           Expanded(
                             child: Text(
                               venue,
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.75),
+                                color: Colors.white.withValues(
+                                  alpha: 0.75,
+                                ),
                                 fontSize: 13,
                               ),
                               maxLines: 1,
@@ -248,15 +368,25 @@ class AllTournament extends StatelessWidget {
                             ),
                           ),
 
-                          const SizedBox(width: 12),
+                          const SizedBox(
+                            width: 12,
+                          ),
 
                           // Time
-                          Icon(Icons.access_time, color: tealAccent, size: 16),
-                          const SizedBox(width: 6),
+                          Icon(
+                            Icons.access_time,
+                            color: tealAccent,
+                            size: 16,
+                          ),
+                          const SizedBox(
+                            width: 6,
+                          ),
                           Text(
                             time,
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.75),
+                              color: Colors.white.withValues(
+                                alpha: 0.75,
+                              ),
                               fontSize: 13,
                             ),
                           ),
@@ -266,7 +396,9 @@ class AllTournament extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(width: 12),
+                const SizedBox(
+                  width: 12,
+                ),
 
                 // Right: Orange chevron
                 Icon(
